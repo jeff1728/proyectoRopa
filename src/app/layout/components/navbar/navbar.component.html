@@ -1,0 +1,16 @@
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+<div class="card flex justify-between items-center w-full px-4 py-2 bg-white">
+  <!-- Izquierda: logo y menú -->
+  <div class="flex items-center gap-4">
+
+    <a routerLink="/" class="text-3xl font-bold" > <h1> Fashion Store </h1> </a>
+    <p-menubar [model]="menuItems" [style]="{ 'background-color': 'transparent' }" styleClass="custom-menubar"></p-menubar>
+  </div>
+
+  <!-- Derecha: Login y carrito -->
+  <div class="flex items-center gap-3">
+    <button pButton label="Login" icon="pi pi-user" class="p-button-text" [routerLink]="['/login']"  ></button>
+    <button pButton icon="pi pi-shopping-cart" class="p-button-text" aria-label="Cart"></button>
+  </div>
+</div>

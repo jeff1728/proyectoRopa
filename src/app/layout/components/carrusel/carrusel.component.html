@@ -1,0 +1,29 @@
+<div class="relative w-screen h-screen overflow-hidden bg-black">
+  <ng-container *ngFor="let image of images; let i = index">
+    <img
+      [src]="image"
+      alt="carousel image"
+      class="carousel-img"
+      [class.opacity-100]="i === currentIndex"
+      [class.opacity-0]="i !== currentIndex"
+      loading="lazy"
+    />
+  </ng-container>
+
+  <div class="carousel-overlay"></div>
+
+  <div class="carousel-text">
+    <h2 class="text-5xl font-bold drop-shadow-lg">
+      {{ overlayText }}
+    </h2>
+  </div>
+
+  <div class="carousel-indicators">
+    <button
+      *ngFor="let image of images; let i = index"
+      (click)="goTo(i)"
+      [class.active]="i === currentIndex"
+      [attr.aria-label]="'Go to slide ' + (i + 1)"
+    ></button>
+  </div>
+</div>

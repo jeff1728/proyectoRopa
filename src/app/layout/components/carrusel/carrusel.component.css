@@ -1,0 +1,72 @@
+:host {
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+/* Encapsula el selector de imagen solo para este carrusel */
+.carousel-img {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-img.opacity-100 {
+  opacity: 1;
+  z-index: 10;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 11;
+}
+
+.carousel-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 1rem;
+  z-index: 12;
+  color: white;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 13;
+}
+
+.carousel-indicators button {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.carousel-indicators button.active {
+  background-color: white;
+}
+
+.carousel-indicators button:focus {
+  outline: none;
+}
