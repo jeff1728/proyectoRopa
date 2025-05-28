@@ -1,0 +1,34 @@
+<div *ngIf="visible" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl w-full max-w-lg p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold">Carrito de compras</h2>
+      <button (click)="cerrar()" class="text-red-500 text-lg">×</button>
+    </div>
+    
+    <div *ngIf="productos.length === 0">
+      <p>No hay productos en el carrito.</p>
+    </div>
+
+    <div *ngFor="let producto of productos" class="border-b py-2">
+      <div class="flex justify-between">
+        <div>
+          <p class="font-semibold">{{ producto.nombre }}</p>
+          <p class="text-sm text-gray-500">Talla: {{ producto.talla }} | Color: {{ producto.color }}</p>
+        </div>
+        <div>
+          <p>${{ producto.precio }}</p>
+          <div class="flex items-center mt-1">
+            <button (click)="disminuir(producto)" class="px-2 bg-gray-200 rounded-l">-</button>
+            <span class="px-3">{{ producto.cantidad }}</span>
+            <button (click)="aumentar(producto)" class="px-2 bg-gray-200 rounded-r">+</button>
+            <button (click)="eliminar(producto)" class="ml-3 text-red-500">🗑</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-right mt-4 font-bold">
+      Total: ${{ total() }}
+    </div>
+  </div>
+</div>

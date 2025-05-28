@@ -3,14 +3,25 @@
 <div class="card flex justify-between items-center w-full px-4 py-2 bg-white">
   <!-- Izquierda: logo y menú -->
   <div class="flex items-center gap-4">
-
-    <a routerLink="/" class="text-3xl font-bold" > <h1> Fashion Store </h1> </a>
+    <a routerLink="/" class="text-3xl font-bold">
+      <h1>Fashion Store</h1>
+    </a>
     <p-menubar [model]="menuItems" [style]="{ 'background-color': 'transparent' }" styleClass="custom-menubar"></p-menubar>
   </div>
 
-  <!-- Derecha: Login y carrito -->
+  <!-- Derecha: Login/Register o Usuario y Logout -->
   <div class="flex items-center gap-3">
-    <button pButton label="Login" icon="pi pi-user" class="p-button-text" [routerLink]="['/login']"  ></button>
-    <button pButton icon="pi pi-shopping-cart" class="p-button-text" aria-label="Cart"></button>
+    <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
+      <button pButton label="Login" icon="pi pi-user" class="p-button-text" [routerLink]="['/login']"></button>
+      <button pButton label="Register" icon="pi pi-user" class="p-button-text" [routerLink]="['/register']"></button>
+    </ng-container>
+
+    <ng-template #loggedInTemplate>
+      <span class="font-medium text-gray-700">Hola, {{ nombreUsuario }}</span>
+      <button pButton label="Logout" icon="pi pi-sign-out" class="p-button-text" (click)="logout()"></button>
+    </ng-template>
+
+    <button (click)="carritoModal.abrir()" pButton icon="pi pi-shopping-cart" class="p-button-text"  aria-label="Cart"></button>
+    <app-carrito-modal #carritoModal></app-carrito-modal>
   </div>
 </div>
